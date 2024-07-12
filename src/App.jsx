@@ -1,7 +1,15 @@
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+
 function App() {
   return (
     <>
-      <h1>Hello</h1>
+      <div className=" flex min-h-screen  items-center text-center">
+        <div className="container">
+          <Header />
+          <Main />
+        </div>
+      </div>
     </>
   );
 }
