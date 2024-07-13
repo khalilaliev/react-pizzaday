@@ -17,6 +17,9 @@ export default {
     outline: {
       orange: "1px solid #EAB308",
     },
+    height: {
+      "calc-100vh-minus-120px": "calc(100vh - 120px)",
+    },
     extend: {},
   },
   plugins: [],

@@ -1,8 +1,22 @@
 import { INPUT_TEXT } from "../../constants/input-text";
 import { DESCRIPTION } from "../../constants/main-text";
-import Input from "../Input/Input";
+import { useState } from "react";
+import Login from "../Login/Login";
 
 const Main = () => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    setValue("");
+  };
+
   return (
     <>
       <main>
@@ -17,7 +31,12 @@ const Main = () => {
           {DESCRIPTION.GREETING}
         </p>
         <div className="flex justify-center gap-3">
-          <Input showButton={true} placeholder={INPUT_TEXT.LOGIN} />
+          <Login
+            handleChange={handleChange}
+            handelSubmit={handelSubmit}
+            value={value}
+            placeholder={INPUT_TEXT.LOGIN}
+          />
         </div>
       </main>
     </>
