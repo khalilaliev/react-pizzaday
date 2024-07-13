@@ -1,3 +1,4 @@
+import { INPUT_TEXT } from "../../constants/input-text";
 import Input from "../Input/Input";
 
 const Header = () => {
@@ -7,7 +8,7 @@ const Header = () => {
         <a className="logo text-custom-gray font-mono text-xl" href="/">
           Pizza Day
         </a>
-        <Input placeholder="Search for the order #" />
+        <Input showButton={false} placeholder={INPUT_TEXT.SEARCH} />
       </header>
     </>
   );

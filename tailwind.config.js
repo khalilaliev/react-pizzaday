@@ -14,6 +14,9 @@ export default {
       "custom-gray": "#44403C",
       "custom-border": "#E7E5E4",
     },
+    outline: {
+      orange: "1px solid #EAB308",
+    },
     extend: {},
   },
   plugins: [],
