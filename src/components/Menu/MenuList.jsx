@@ -1,16 +1,13 @@
 import MenuListItem from "./MenuListItem";
 
 const MenuList = ({ pizzas }) => {
+  // console.log(pizzas);
   return (
-    <>
-      <>
-        <ul className=" flex gap-4 py-2 flex-col  text-left">
-          {pizzas.map((pizza) => (
-            <MenuListItem key={pizza.id} pizza={pizza} />
-          ))}
-        </ul>
-      </>
-    </>
+    <ul className=" flex gap-4 py-2 flex-col  text-left">
+      {pizzas.map((pizza) => (
+        <MenuListItem key={pizza.id} pizza={pizza} />
+      ))}
+    </ul>
   );
 };
 

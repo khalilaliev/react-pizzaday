@@ -1,13 +1,29 @@
-import { pizzas } from "../../data/mock-pizzas-data";
+// import { pizzas } from "../../data/mock-pizzas-data";
+import { useEffect, useState } from "react";
 import MenuList from "./MenuList";
+import { API } from "../../utils/pizzas-api";
 
 const Menu = () => {
+  const [pizzas, setPizzas] = useState([]);
+
+  useEffect(() => {
+    const getPizzasData = async () => {
+      try {
+        const res = await fetch(API);
+        if (!res.ok) throw new Error("Pizzas not found!");
+        const data = await res.json();
+        setPizzas(data);
+      } catch (e) {
+        console.error(e.message);
+      }
+    };
+    getPizzasData();
+  }, []);
+
   return (
-    <>
-      <div className="max-w-4xl my-0 mx-auto h-calc-100vh-minus-120px">
-        {pizzas.length ? <MenuList pizzas={pizzas} /> : null}
-      </div>
-    </>
+    <div className="max-w-4xl my-0 mx-auto h-calc-100vh-minus-120px">
+      {pizzas.data?.length ? <MenuList pizzas={pizzas.data} /> : null}
+    </div>
   );
 };
 
