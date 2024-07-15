@@ -5,7 +5,9 @@ const MenuList = ({ pizzas }) => {
     <>
       <>
         <ul className=" flex gap-4 py-2 flex-col  text-left">
-          <MenuListItem pizzas={pizzas} />
+          {pizzas.map((pizza) => (
+            <MenuListItem key={pizza.id} pizza={pizza} />
+          ))}
         </ul>
       </>
     </>
