@@ -2,7 +2,15 @@ import { BTN_ADD } from "../../constants/button-text";
 import Button from "../Button/Button";
 import Counter from "../Counter/Counter";
 
-const MenuListItem = ({ pizza, showCounter, onClick, selectedPizza }) => {
+const MenuListItem = ({
+  pizza,
+  showCounter,
+  onClick,
+  selectedPizza,
+  counter,
+  increment,
+  decrement,
+}) => {
   return (
     <li className="bg-white shadow-md rounded-md flex  items-center p-4 ">
       {pizza.soldOut ? (
@@ -34,7 +42,12 @@ const MenuListItem = ({ pizza, showCounter, onClick, selectedPizza }) => {
                 €{pizza.unitPrice}
               </p>
               {showCounter && selectedPizza === pizza.id ? (
-                <Counter onClick={onClick} />
+                <Counter
+                  increment={increment}
+                  decrement={decrement}
+                  counter={counter}
+                  onClick={onClick}
+                />
               ) : (
                 <Button
                   onClick={() => onClick(pizza.id)}

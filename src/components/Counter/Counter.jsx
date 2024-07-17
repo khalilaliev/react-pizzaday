@@ -1,21 +1,6 @@
-import { useState } from "react";
 import Button from "../Button/Button";
 
-const Counter = ({ onClick }) => {
-  const [counter, setCounter] = useState(1);
-
-  const increment = () => {
-    setCounter((prevState) => prevState + 1);
-  };
-  const decrement = () => {
-    setCounter((prevState) => {
-      if (prevState > 0) {
-        return prevState - 1;
-      }
-      return prevState;
-    });
-  };
-
+const Counter = ({ onClick, counter, decrement, increment }) => {
   return (
     <>
       <div className=" flex justify-center items-center gap-4">
