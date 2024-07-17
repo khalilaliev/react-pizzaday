@@ -1,6 +1,8 @@
+import { BTN_ADD } from "../../constants/button-text";
 import Button from "../Button/Button";
+import Counter from "../Counter/Counter";
 
-const MenuListItem = ({ pizza }) => {
+const MenuListItem = ({ pizza, showCounter, onClick, selectedPizza }) => {
   return (
     <li className="bg-white shadow-md rounded-md flex  items-center p-4 ">
       {pizza.soldOut ? (
@@ -31,7 +33,15 @@ const MenuListItem = ({ pizza }) => {
               <p className="pizza__price text-lg font-normal mt-2 text-custom-gray">
                 €{pizza.unitPrice}
               </p>
-              <Button className={"p-4"} text="Add to card" />
+              {showCounter && selectedPizza === pizza.id ? (
+                <Counter onClick={onClick} />
+              ) : (
+                <Button
+                  onClick={() => onClick(pizza.id)}
+                  className={"p-4"}
+                  text={BTN_ADD}
+                />
+              )}
             </>
           )}
         </div>

@@ -1,7 +1,10 @@
-const Button = ({ text }) => {
+const Button = ({ text, onClick }) => {
   return (
     <>
-      <button className="bg-bg-color border-0 px-4 py-2 rounded-lg font-mono active:scale-95 transition-all duration-300">
+      <button
+        onClick={onClick}
+        className="bg-bg-color border-0 px-4 py-2 rounded-lg font-mono active:scale-95 transition-all duration-300"
+      >
         {text}
       </button>
     </>

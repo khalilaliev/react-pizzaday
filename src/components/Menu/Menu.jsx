@@ -5,6 +5,22 @@ import { API } from "../../utils/pizzas-api";
 
 const Menu = () => {
   const [pizzas, setPizzas] = useState([]);
+  const [showCounter, setShowCounter] = useState(false);
+  const [selectedPizza, setSelectedPizza] = useState(null);
+
+  // const handleAddToCard = (id) => {
+  //   setSelectedPizza(id);
+  // };
+
+  const changeState = (id) => {
+    if (selectedPizza === id && showCounter) {
+      setShowCounter(false);
+      setSelectedPizza(null);
+    } else {
+      setShowCounter(true);
+      setSelectedPizza(id);
+    }
+  };
 
   useEffect(() => {
     const getPizzasData = async () => {
@@ -22,7 +38,14 @@ const Menu = () => {
 
   return (
     <div className="max-w-4xl my-0 mx-auto h-calc-100vh-minus-120px">
-      {pizzas.data?.length ? <MenuList pizzas={pizzas.data} /> : null}
+      {pizzas.data?.length ? (
+        <MenuList
+          selectedPizza={selectedPizza}
+          onClick={changeState}
+          showCounter={showCounter}
+          pizzas={pizzas.data}
+        />
+      ) : null}
     </div>
   );
 };
