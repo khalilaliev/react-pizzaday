@@ -1,20 +1,33 @@
 import { INPUT_TEXT } from "../../constants/input-text";
 import { DESCRIPTION } from "../../constants/main-text";
-import { useState } from "react";
+// import { useState } from "react";
 import Login from "../Login/Login";
+import { useNavigate } from "react-router-dom";
+import { useValueContext } from "../../context/InputValueContext";
 
 const Main = () => {
-  const [value, setValue] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    console.log(e.target.value);
+  const { inputValue, setInputValue } = useValueContext();
+
+  const goToMenuPage = () => {
+    navigate("/menu");
   };
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    console.log("form submitted");
-    setValue("");
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    if (inputValue.length !== 0 && inputValue !== " ") {
+      e.preventDefault();
+      goToMenuPage();
+
+      console.log("Form submitted", inputValue);
+    } else {
+      e.preventDefault();
+      return;
+    }
   };
 
   return (
@@ -33,8 +46,8 @@ const Main = () => {
         <div className="flex justify-center gap-3">
           <Login
             handleChange={handleChange}
-            handelSubmit={handelSubmit}
-            value={value}
+            handleSubmit={handleSubmit}
+            value={inputValue}
             placeholder={INPUT_TEXT.LOGIN}
           />
         </div>
