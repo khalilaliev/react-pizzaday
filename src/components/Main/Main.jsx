@@ -1,6 +1,5 @@
 import { INPUT_TEXT } from "../../constants/input-text";
 import { DESCRIPTION } from "../../constants/main-text";
-// import { useState } from "react";
 import Login from "../Login/Login";
 import { useNavigate } from "react-router-dom";
 import { useValueContext } from "../../context/InputValueContext";

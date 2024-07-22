@@ -1,17 +1,16 @@
+import { useDispatch } from "react-redux";
 import { BTN_ADD } from "../../constants/button-text";
 import Button from "../Button/Button";
-import Counter from "../Counter/Counter";
+import { addToCard } from "../../redux/slices/CardSlice";
 
-const MenuListItem = ({
-  pizza,
-  showCounter,
-  onClick,
-  selectedPizza,
-  counter,
-  increment,
-  decrement,
-}) => {
-  const { soldOut, imageUrl, name, unitPrice, id, ingredients } = pizza;
+const MenuListItem = ({ pizza, onClick }) => {
+  const { soldOut, imageUrl, name, unitPrice, ingredients } = pizza;
+
+  const dispatch = useDispatch();
+
+  const handleAddToCard = () => {
+    dispatch(addToCard(pizza));
+  };
 
   return (
     <li className="bg-white shadow-md rounded-md flex  items-center p-4 ">
@@ -43,20 +42,12 @@ const MenuListItem = ({
               <p className="pizza__price text-lg font-normal mt-2 text-custom-gray">
                 €{unitPrice}
               </p>
-              {showCounter && selectedPizza === id ? (
-                <Counter
-                  increment={increment}
-                  decrement={decrement}
-                  counter={counter}
-                  onClick={onClick}
-                />
-              ) : (
-                <Button
-                  onClick={() => onClick(pizza.id)}
-                  className={"p-4"}
-                  text={BTN_ADD}
-                />
-              )}
+              <Button
+                onClick={() => onClick(pizza.id)}
+                className={"p-4"}
+                text={BTN_ADD}
+                handleAddToCard={handleAddToCard}
+              />
             </>
           )}
         </div>

@@ -6,19 +6,6 @@ const Menu = () => {
   const [pizzas, setPizzas] = useState([]);
   const [showCounter, setShowCounter] = useState(false);
   const [selectedPizza, setSelectedPizza] = useState(null);
-  const [counter, setCounter] = useState(1);
-
-  const increment = () => {
-    setCounter((prevState) => prevState + 1);
-  };
-  const decrement = () => {
-    setCounter((prevState) => {
-      if (prevState > 0) {
-        return prevState - 1;
-      }
-      return prevState;
-    });
-  };
 
   const changeState = (id) => {
     if (selectedPizza === id && showCounter) {
@@ -49,9 +36,6 @@ const Menu = () => {
       <div className="max-w-4xl my-0 mx-auto h-calc-100vh-minus-120px">
         {pizzas.data?.length ? (
           <MenuList
-            decrement={decrement}
-            increment={increment}
-            counter={counter}
             selectedPizza={selectedPizza}
             onClick={changeState}
             showCounter={showCounter}
