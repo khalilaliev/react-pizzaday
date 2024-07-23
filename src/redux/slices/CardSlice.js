@@ -44,10 +44,11 @@ const cardSlice = createSlice({
       state.totalItems = totalItems(state.items);
       state.totalPrice = totalPrice(state.items);
     },
+    reset: () => initialState,
   },
 });
 
-export const { addToCard, deleteItem, incrementPizza, decrementPizza } =
+export const { addToCard, deleteItem, incrementPizza, decrementPizza, reset } =
   cardSlice.actions;
 
 export default cardSlice.reducer;

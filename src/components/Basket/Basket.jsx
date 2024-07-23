@@ -1,5 +1,6 @@
+import "./style.css";
 import { GoArrowLeft } from "react-icons/go";
-import { BACK_TO_MENU } from "../../constants/button-text";
+import { BACK_TO_MENU, CLEAN, ORDER } from "../../constants/button-text";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ import {
   decrementPizza,
   deleteItem,
   incrementPizza,
+  reset,
 } from "../../redux/slices/CardSlice";
 
 const Basket = () => {
@@ -31,11 +33,15 @@ const Basket = () => {
     dispatch(deleteItem(id));
   };
 
+  const resetBasket = () => {
+    dispatch(reset());
+  };
+
   return (
-    <div className=" max-h-screen   w-1/2 my-0 mx-auto flex justify-between flex-col">
+    <div className=" max-h-screen max-w-5xl my-0 mx-auto flex justify-between flex-col">
       <button
         onClick={goToMainPage}
-        className="mb-7 flex items-center gap-3 text-blue-700"
+        className="btn-back-to mb-7 flex items-center gap-3 text-blue-700"
       >
         <GoArrowLeft /> {BACK_TO_MENU}
       </button>
@@ -43,14 +49,14 @@ const Basket = () => {
       {pizza.items.map((item) => (
         <div
           key={item.id}
-          className="flex justify-between items-center flex-row mb-7 border-bs p-6 "
+          className="flex justify-between items-center flex-row mb-7 border-bs p-6 list-box"
         >
           <div>
             <p className=" text-xl">
               {item.count}x {item.name}
             </p>
           </div>
-          <div className="flex justify-between items-center gap-5 ">
+          <div className=" flex justify-between items-center gap-5 ">
             <p className="font-medium text-xl text-custom-gray">
               {item.count * item.unitPrice}$
             </p>
@@ -64,8 +70,14 @@ const Basket = () => {
         </div>
       ))}
       <div className="flex flex-row gap-5">
-        <Button text="Order pizzas" />
-        <Button text="Clean cart" />
+        <Button text={ORDER} />
+        {/* <Button text={CLEAN} /> */}
+        <button
+          onClick={resetBasket}
+          className=" uppercase btn-clean px-5 py-3 rounded-xl font-mono active:scale-95 transition-all duration-300"
+        >
+          {CLEAN}
+        </button>
       </div>
     </div>
   );
