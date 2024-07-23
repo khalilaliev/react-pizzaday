@@ -2,40 +2,12 @@ import "./style.css";
 import { GoArrowLeft } from "react-icons/go";
 import { BACK_TO_MENU, CLEAN, ORDER } from "../../constants/button-text";
 import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import Counter from "../Counter/Counter";
-import {
-  decrementPizza,
-  deleteItem,
-  incrementPizza,
-  reset,
-} from "../../redux/slices/CardSlice";
+import useBasket from "../../hooks/useBasket";
 
 const Basket = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const pizza = useSelector((state) => state.card);
-
-  const goToMainPage = () => {
-    navigate("/menu");
-  };
-
-  const increment = (id) => {
-    dispatch(incrementPizza(id));
-  };
-
-  const decrement = (id) => {
-    dispatch(decrementPizza(id));
-  };
-
-  const removeItem = (id) => {
-    dispatch(deleteItem(id));
-  };
-
-  const resetBasket = () => {
-    dispatch(reset());
-  };
+  const { goToMainPage, pizza, increment, decrement, removeItem, resetBasket } =
+    useBasket();
 
   return (
     <div className=" max-h-screen max-w-5xl my-0 mx-auto flex justify-between flex-col">
