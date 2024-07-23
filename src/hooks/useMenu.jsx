@@ -2,18 +2,6 @@ import { useEffect, useState } from "react";
 
 const useMenu = (api) => {
   const [pizzas, setPizzas] = useState([]);
-  const [showCounter, setShowCounter] = useState(false);
-  const [selectedPizza, setSelectedPizza] = useState(null);
-
-  const changeState = (id) => {
-    if (selectedPizza === id && showCounter) {
-      setShowCounter(false);
-      setSelectedPizza(null);
-    } else {
-      setShowCounter(true);
-      setSelectedPizza(id);
-    }
-  };
 
   useEffect(() => {
     const getPizzasData = async () => {
@@ -29,7 +17,7 @@ const useMenu = (api) => {
     getPizzasData();
   }, [api]);
 
-  return { showCounter, selectedPizza, pizzas, changeState };
+  return { pizzas };
 };
 
 export default useMenu;

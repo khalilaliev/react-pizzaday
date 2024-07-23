@@ -45,6 +45,9 @@ const cardSlice = createSlice({
       state.totalPrice = totalPrice(state.items);
     },
     reset: () => initialState,
+    // showTotalSum: (state, action) => {
+
+    // }
   },
 });
 

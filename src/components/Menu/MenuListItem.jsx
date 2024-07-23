@@ -3,7 +3,7 @@ import { BTN_ADD } from "../../constants/button-text";
 import Button from "../Button/Button";
 import { addToCard } from "../../redux/slices/CardSlice";
 
-const MenuListItem = ({ pizza, onClick }) => {
+const MenuListItem = ({ pizza }) => {
   const { soldOut, imageUrl, name, unitPrice, ingredients } = pizza;
 
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const MenuListItem = ({ pizza, onClick }) => {
                 €{unitPrice}
               </p>
               <Button
-                onClick={() => onClick(pizza.id)}
+                // onClick={() => onClick(pizza.id)}
                 className={"p-4"}
                 text={BTN_ADD}
                 handleAddToCard={handleAddToCard}

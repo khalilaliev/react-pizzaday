@@ -1,14 +1,9 @@
-const Button = ({ text, onClick, type, handleAddToCard }) => {
-  const handleClick = (event) => {
-    if (onClick) onClick(event);
-    if (handleAddToCard) handleAddToCard(event);
-  };
-
+const Button = ({ text, type, handleAddToCard }) => {
   return (
     <>
       <button
         type={type}
-        onClick={handleClick}
+        onClick={handleAddToCard}
         className="bg-bg-color uppercase border-0 px-5 py-3 rounded-xl font-mono active:scale-95 transition-all duration-300"
       >
         {text}

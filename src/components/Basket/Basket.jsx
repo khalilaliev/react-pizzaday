@@ -10,7 +10,7 @@ const Basket = () => {
     useBasket();
 
   return (
-    <div className=" max-h-screen max-w-5xl my-0 mx-auto flex justify-between flex-col">
+    <div className=" max-h-screen max-w-5xl my-28 mx-auto flex justify-between flex-col">
       <button
         onClick={goToMainPage}
         className="btn-back-to mb-7 flex items-center gap-3 text-blue-700"
