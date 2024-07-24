@@ -9,11 +9,15 @@ import {
 
 const useBasket = () => {
   const navigate = useNavigate();
+  const navigateToOrder = useNavigate();
   const dispatch = useDispatch();
   const pizza = useSelector((state) => state.card);
 
   const goToMainPage = () => {
     navigate("/menu");
+  };
+  const goToOrderPage = () => {
+    navigateToOrder("/menu/order");
   };
 
   const increment = (id) => {
@@ -41,6 +45,7 @@ const useBasket = () => {
     decrement,
     removeItem,
     resetBasket,
+    goToOrderPage,
   };
 };
 

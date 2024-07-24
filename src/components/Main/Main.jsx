@@ -21,8 +21,6 @@ const Main = () => {
     if (inputValue.length !== 0 && inputValue !== " ") {
       e.preventDefault();
       goToMenuPage();
-
-      console.log("Form submitted", inputValue);
     } else {
       e.preventDefault();
       return;
