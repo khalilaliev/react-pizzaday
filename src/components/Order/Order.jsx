@@ -14,7 +14,7 @@ import { schema } from "../../shared/schemaOrder";
 const Order = () => {
   const pizza = useSelector((state) => state.card);
   const navigate = useNavigate();
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     mode: "onBlur",
     defaultValues: {
       name: "Name",
@@ -31,6 +31,7 @@ const Order = () => {
 
   const handleSubmitOrderForm = (data) => {
     console.log(data);
+    reset();
   };
 
   return (
