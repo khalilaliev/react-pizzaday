@@ -6,6 +6,7 @@ import MenuPage from "./pages/MenuPage";
 import Card from "./components/Card/Card";
 import Basket from "./components/Basket/Basket";
 import OrderPage from "./pages/OrderPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="menu" element={<MenuPage />} />
             <Route path="menu/basket" element={<Basket />} />
             <Route path="menu/order" element={<OrderPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
         <Card />
