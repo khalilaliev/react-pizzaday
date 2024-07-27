@@ -6,4 +6,17 @@ body {
   font-family: "Source Code Pro", monospace;
   background: #f2f5f9;
   color: #43403c;
+  /* overflow: hidden; */
 }
+
+/* html,
+body,
+#root,
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  overflow-y: auto;
+} */

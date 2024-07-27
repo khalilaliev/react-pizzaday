@@ -4,45 +4,28 @@ import { DESCRIPTION } from "../../constants/main-text";
 import InputBox from "../Input/InputBox";
 import Button from "../Button/Button";
 import { BACK_TO_BASKET, ORDER_NOW } from "../../constants/button-text";
-import { useSelector } from "react-redux";
 import { GoArrowLeft } from "react-icons/go";
-import { useNavigate } from "react-router-dom";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "../../shared/schemaOrder";
+import { Controller } from "react-hook-form";
+import useOrder from "../../hooks/useOrder";
+import NavButton from "../Button/NavButton";
 
 const Order = () => {
-  const pizza = useSelector((state) => state.card);
-  const navigate = useNavigate();
-  const { handleSubmit, control, reset } = useForm({
-    mode: "onBlur",
-    defaultValues: {
-      name: "Name",
-      phone: "",
-      address: "",
-      isPriority: false,
-    },
-    resolver: zodResolver(schema),
-  });
-
-  const goToBasketPage = () => {
-    navigate("/menu/basket");
-  };
-
-  const handleSubmitOrderForm = (data) => {
-    console.log(data);
-    reset();
-  };
+  const {
+    goToBasketPage,
+    handleSubmit,
+    handleSubmitOrderForm,
+    control,
+    pizza,
+  } = useOrder();
 
   return (
     <>
-      <div className="  max-w-3xl mt-28 mx-auto flex justify-between flex-col">
-        <button
+      <div className="  max-w-3xl py-6 mx-auto flex justify-between flex-col">
+        <NavButton
           onClick={goToBasketPage}
-          className="btn-back-to mb-7 flex items-center gap-3 text-blue-700"
-        >
-          <GoArrowLeft /> {BACK_TO_BASKET}
-        </button>
+          text={BACK_TO_BASKET}
+          icon={<GoArrowLeft />}
+        />
         <h1 className="font-source-code text-2xl text-left tracking-wide mb-9">
           {DESCRIPTION.ORDER}
         </h1>

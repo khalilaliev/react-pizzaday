@@ -32,7 +32,7 @@ const Card = () => {
                 onClick={goToBasketPage}
                 className="cursor-pointer flex justify-between items-center gap-3"
               >
-                Open card <BsArrowRight />
+                Open cart <BsArrowRight />
               </button>
             </div>
           </div>

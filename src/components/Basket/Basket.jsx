@@ -4,6 +4,7 @@ import { BACK_TO_MENU, CLEAN, ORDER } from "../../constants/button-text";
 import Button from "../Button/Button";
 import Counter from "../Counter/Counter";
 import useBasket from "../../hooks/useBasket";
+import NavButton from "../Button/NavButton";
 
 const Basket = () => {
   const {
@@ -17,13 +18,12 @@ const Basket = () => {
   } = useBasket();
 
   return (
-    <div className="font-mono max-w-5xl my-28 mx-auto flex justify-between flex-col">
-      <button
+    <div className="font-mono max-w-5xl py-6 mx-auto flex justify-between flex-col">
+      <NavButton
         onClick={goToMainPage}
-        className="btn-back-to mb-7 flex items-center gap-3 text-blue-700"
-      >
-        <GoArrowLeft /> {BACK_TO_MENU}
-      </button>
+        icon={<GoArrowLeft />}
+        text={BACK_TO_MENU}
+      />
       <h2 className="mb-7 font-mono text-3xl text-left">
         Your cart, {pizza.totalItems}
       </h2>
