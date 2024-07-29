@@ -10,11 +10,7 @@ import {
   EXPENSIVE,
   SORT_BY,
 } from "../../constants/value-text";
-import {
-  sortByAvailable,
-  sortByCheapToExpensive,
-  sortByExpensiveToCheap,
-} from "../../utils/filterItems";
+import { handleSortChange } from "../../utils/filterItems";
 
 const Menu = () => {
   const {
@@ -26,19 +22,8 @@ const Menu = () => {
     setSortedData(data);
   }, [data]);
 
-  const handleSortChange = (event) => {
-    const value = event.target.value;
-
-    switch (value) {
-      case AVAILABLE:
-        return sortByAvailable(data, setSortedData);
-      case CHEAP:
-        return sortByCheapToExpensive(data, setSortedData);
-      case EXPENSIVE:
-        return sortByExpensiveToCheap(data, setSortedData);
-      default:
-        return data;
-    }
+  const handleSort = (e) => {
+    handleSortChange(e, data, setSortedData);
   };
 
   return (
@@ -47,7 +32,7 @@ const Menu = () => {
         {data?.length && (
           <div className="ml-auto mb-5 relative  w-48">
             <select
-              onChange={handleSortChange}
+              onChange={handleSort}
               className="sort-box block w-full py-2 pl-3 pr-10  rounded-xl appearance-none focus:outline-none "
             >
               <option value={SORT_BY}>Sort by</option>
