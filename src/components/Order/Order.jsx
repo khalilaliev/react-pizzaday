@@ -1,4 +1,4 @@
-import "./style.css";
+// import "./style.css";
 import { LABEL_TEXT } from "../../constants/input-text";
 import { DESCRIPTION } from "../../constants/main-text";
 import InputBox from "../Input/InputBox";
@@ -105,11 +105,7 @@ const Order = () => {
           <div className="flex justify-start">
             <Button
               width="250px"
-              text={`${ORDER_NOW} €${
-                isPriority
-                  ? (pizza.totalPrice + 8).toFixed(2)
-                  : pizza.totalPrice.toFixed(2)
-              }`}
+              text={`${ORDER_NOW} €${pizza.totalPrice.toFixed(2)}`}
             />
           </div>
         </form>

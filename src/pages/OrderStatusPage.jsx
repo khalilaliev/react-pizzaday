@@ -30,7 +30,7 @@ const OrderStatusPage = () => {
   }
 
   if (!data) {
-    return <div className="text-lg text-center py-3">No order data found.</div>;
+    return <div className="text-xl text-center py-5">Data is loading...</div>;
   }
 
   const estimatedDelivery = new Date(data.estimatedDelivery);
