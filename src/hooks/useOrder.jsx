@@ -31,8 +31,6 @@ const useOrder = () => {
   };
 
   const handleSubmitOrderForm = async (data) => {
-    const priorityPrice = isPriority ? 8 : 0;
-
     const orderData = {
       address: data.address,
       customer: data.name,
@@ -46,8 +44,6 @@ const useOrder = () => {
         totalPrice: item.count * item.unitPrice,
         unitPrice: item.unitPrice,
       })),
-      orderPrice: pizza.totalPrice + priorityPrice,
-      priorityPrice,
     };
 
     console.log("Order Data:", orderData);
