@@ -6,6 +6,10 @@ import { formatTime } from "../constants/format-time";
 import Button from "../components/Button/Button";
 import { PRIORITIZE } from "../constants/button-text";
 import { useState } from "react";
+import {
+  getEstimatedDelivery,
+  getWaitTimeMinutes,
+} from "../utils/calculateTime";
 
 const OrderStatusPage = () => {
   const [setBtnPriority] = useState(false);
@@ -33,9 +37,8 @@ const OrderStatusPage = () => {
     return <div className="text-xl text-center py-5">Data is loading...</div>;
   }
 
-  const estimatedDelivery = new Date(data.estimatedDelivery);
-  const waitTimeMinutes =
-    (estimatedDelivery.getTime() - new Date().getTime()) / 60000;
+  const estimatedDelivery = getEstimatedDelivery(data);
+  const waitTimeMinutes = getWaitTimeMinutes(estimatedDelivery);
 
   const setPriority = () => {
     setBtnPriority((prevState) => !prevState);
