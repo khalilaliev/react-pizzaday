@@ -16,11 +16,14 @@ const Order = () => {
     handleSubmitOrderForm,
     control,
     pizza,
+    errorMessage,
+    isPriority,
+    handlePriority,
   } = useOrder();
 
   return (
     <>
-      <div className="  max-w-3xl py-6 mx-auto flex justify-between flex-col">
+      <div className="max-w-3xl py-6 mx-auto flex justify-between flex-col">
         <NavButton
           onClick={goToBasketPage}
           text={BACK_TO_BASKET}
@@ -80,23 +83,39 @@ const Order = () => {
 
           <div className="mb-8">
             <div className="ml-5 flex gap-4 justify-center items-center">
-              <input
-                className="custom-checkbox"
-                id="checkbox"
-                type="checkbox"
+              <Controller
+                control={control}
+                name="isPriority"
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    className="custom-checkbox"
+                    id="checkbox"
+                    type="checkbox"
+                    checked={isPriority}
+                    onChange={handlePriority}
+                  />
+                )}
               />
               <label className="font-mono tracking-wide" htmlFor="checkbox">
                 {LABEL_TEXT.CHECK}
               </label>
             </div>
           </div>
-          <div className=" flex justify-start">
+          <div className="flex justify-start">
             <Button
               width="250px"
-              text={`${ORDER_NOW} €${pizza.totalPrice.toFixed(2)}`}
+              text={`${ORDER_NOW} €${
+                isPriority
+                  ? (pizza.totalPrice + 8).toFixed(2)
+                  : pizza.totalPrice.toFixed(2)
+              }`}
             />
           </div>
         </form>
+        {errorMessage && (
+          <div className="text-red-500 mt-4">{errorMessage}</div>
+        )}
       </div>
     </>
   );

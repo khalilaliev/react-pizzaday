@@ -19,7 +19,7 @@ function App() {
           <Route path="menu" element={<MenuPage />} />
           <Route path="menu/basket" element={<Basket />} />
           <Route path="menu/order" element={<Order />} />
-          <Route path="menu/order:orderId" element={<OrderStatusPage />} />
+          <Route path="menu/order/:id" element={<OrderStatusPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

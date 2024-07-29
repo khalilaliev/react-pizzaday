@@ -30,7 +30,7 @@ const Basket = () => {
       {pizza.items.map((item) => (
         <div
           key={item.id}
-          className="flex justify-between items-center flex-row mb-7 border-bs p-6 list-box"
+          className="flex justify-between items-center flex-row mb-7 border-bs p-4 list-box"
         >
           <div>
             <p className=" text-xl">

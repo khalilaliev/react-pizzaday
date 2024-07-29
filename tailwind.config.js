@@ -15,6 +15,7 @@ export default {
       "custom-border": "#E7E5E4",
       "custom-red": "#FF0000",
       "input-bg": "#FCF097",
+      green: "#00FF00",
     },
     outline: {
       orange: "1px solid #EAB308",

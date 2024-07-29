@@ -6,3 +6,4 @@ export const ORDER = "Order pizzas";
 export const CLEAN = "Clean cart";
 export const ORDER_NOW = "Order now for";
 export const OPEN_CART = "Open cart";
+export const PRIORITIZE = "Prioritize";

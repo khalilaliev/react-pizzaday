@@ -3,17 +3,21 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { schema } from "../shared/schemaOrder";
+import { ORDER_API } from "../utils/apis/pizza-order-api";
+import { useState } from "react";
 
 const useOrder = () => {
   const pizza = useSelector((state) => state.card);
+  const [isPriority, setIsPriority] = useState(false);
   const navigate = useNavigate();
-  const { handleSubmit, control, reset } = useForm({
+
+  const { handleSubmit, control } = useForm({
     mode: "onBlur",
     defaultValues: {
-      name: "Name",
+      name: "",
       phone: "",
       address: "",
-      isPriority: false,
+      // isPriority: false,
     },
     resolver: zodResolver(schema),
   });
@@ -22,9 +26,49 @@ const useOrder = () => {
     navigate("/menu/basket");
   };
 
-  const handleSubmitOrderForm = (data) => {
-    console.log(data);
-    reset();
+  const handlePriority = (e) => {
+    setIsPriority(e.target.checked);
+  };
+
+  const handleSubmitOrderForm = async (data) => {
+    const priorityPrice = isPriority ? 8 : 0;
+
+    const orderData = {
+      address: data.address,
+      customer: data.name,
+      phone: data.phone,
+      priority: isPriority,
+      position: "",
+      cart: pizza.items.map((item) => ({
+        name: item.name,
+        pizzaId: item.id,
+        quantity: item.count,
+        totalPrice: item.count * item.unitPrice,
+        unitPrice: item.unitPrice,
+      })),
+      orderPrice: pizza.totalPrice + priorityPrice,
+      priorityPrice,
+    };
+
+    console.log("Order Data:", orderData);
+
+    try {
+      const response = await fetch(`${ORDER_API}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+      const result = await response.json();
+      if (result.status === "success") {
+        navigate(`/menu/order/${result.data.id}`);
+      } else {
+        throw new Error("Something went wrong");
+      }
+    } catch (e) {
+      console.error(e.message);
+    }
   };
 
   return {
@@ -33,6 +77,8 @@ const useOrder = () => {
     control,
     goToBasketPage,
     handleSubmitOrderForm,
+    isPriority,
+    handlePriority,
   };
 };
 
