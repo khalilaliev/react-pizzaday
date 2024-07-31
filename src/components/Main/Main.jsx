@@ -29,7 +29,7 @@ const Main = () => {
 
   return (
     <>
-      <main className="text-center py-12 ">
+      <main className="text-center pt-14 ">
         <h1 className="text-3xl mb-5 text-custom-gray  font-mono">
           {DESCRIPTION.HEAD}
           <br />

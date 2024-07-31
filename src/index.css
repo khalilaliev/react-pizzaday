@@ -8,15 +8,17 @@ body {
   color: #43403c;
   /* overflow: hidden; */
 }
-/* 
-html,
+
+/* html,
 body,
 #root,
 .container {
-  height: 100%;
+  height: 100dvh;
   overflow: hidden;
 }
 
 .container {
   overflow-y: auto;
+  max-width: none;
+  padding: 70px 0 100px 0;
 } */

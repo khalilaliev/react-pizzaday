@@ -13,15 +13,17 @@ function App() {
   return (
     <>
       <Header />
-      <div className="container flex-grow">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="menu" element={<MenuPage />} />
-          <Route path="menu/basket" element={<Basket />} />
-          <Route path="menu/order" element={<Order />} />
-          <Route path="menu/order/:id" element={<OrderStatusPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+      <div className="max-h-dvh overflow-y-auto overflow-hidden flex-grow pt-16">
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="menu" element={<MenuPage />} />
+            <Route path="menu/basket" element={<Basket />} />
+            <Route path="menu/order" element={<Order />} />
+            <Route path="menu/order/:id" element={<OrderStatusPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
       </div>
       <Card />
     </>

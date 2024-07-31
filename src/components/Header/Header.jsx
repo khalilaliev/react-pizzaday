@@ -10,14 +10,14 @@ const Header = () => {
   return (
     <>
       {pathname === "/" ? (
-        <header className="header  bg-bg-color w-full  p-4 flex items-center justify-between">
+        <header className="fixed top-0 right-0 left-0 z-50 bg-bg-color w-full  p-4 flex items-center justify-between">
           <NavLink className="logo text-custom-gray font-mono text-xl" to="/">
             Pizza Day
           </NavLink>
           <InputHeader placeholder={INPUT_TEXT.SEARCH} />
         </header>
       ) : (
-        <header className="header  bg-bg-color w-full   p-4 flex items-center justify-between">
+        <header className="fixed top-0 right-0 left-0 z-50 bg-bg-color w-full   p-4 flex items-center justify-between">
           <NavLink className="logo text-custom-gray font-mono text-xl" to="/">
             Pizza Day
           </NavLink>
