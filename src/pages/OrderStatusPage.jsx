@@ -5,14 +5,12 @@ import { ORDER_API } from "../utils/apis/pizza-order-api";
 import { formatTime } from "../constants/format-time";
 import Button from "../components/Button/Button";
 import { PRIORITIZE } from "../constants/button-text";
-import { useState } from "react";
 import {
   getEstimatedDelivery,
   getWaitTimeMinutes,
 } from "../utils/calculateTime";
 
 const OrderStatusPage = () => {
-  const [setBtnPriority] = useState(false);
   const { id } = useParams();
 
   const {
@@ -39,10 +37,6 @@ const OrderStatusPage = () => {
 
   const estimatedDelivery = getEstimatedDelivery(data);
   const waitTimeMinutes = getWaitTimeMinutes(estimatedDelivery);
-
-  const setPriority = () => {
-    setBtnPriority((prevState) => !prevState);
-  };
 
   return (
     <>
@@ -86,7 +80,7 @@ const OrderStatusPage = () => {
           </p>
         </div>
         <div className="text-right">
-          <Button onClick={setPriority} text={PRIORITIZE} />
+          <Button text={PRIORITIZE} />
         </div>
       </div>
     </>
